@@ -12,11 +12,22 @@ function login(e){
     let passwordVal = password.value;
 
 if(usuarioVal == ''|| passwordVal == ''){
+   crearMensaje('verifica tus caampos','danger');
     return;
 }
 
-    console.log('el valor del usuario es'+ usuarioVal);
-    console.log('el valor del pass es'+ passwordVal);
+    
+if(localStorage.getItem('usuario')){
+    let objeto = JSON.parse (localStorage.getItem('usuario'));
 
+    if(usuarioVal == objeto.user && passwordVal== objeto.pass){
+        crearMensaje('login correcto','success');
+} else {
+    crearMensaje('usuaario incorecto','danger');
+   }
+} else {
+crearMensaje('no hay registros','danger');
+
+}
 
 }
