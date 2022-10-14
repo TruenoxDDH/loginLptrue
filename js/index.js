@@ -22,7 +22,12 @@ if(localStorage.getItem('usuario')){
 
     if(usuarioVal == objeto.user && passwordVal== objeto.pass){
         crearMensaje('login correcto','success');
-} else {
+        localStorage.setItem('sesion','activa');
+        setTimeout(function(){
+            window.open('./inicio.html', '_self');
+           
+        },2000);
+}  else {
     crearMensaje('usuaario incorecto','danger');
    }
 } else {
